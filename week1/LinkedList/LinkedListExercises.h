@@ -243,7 +243,24 @@ LinkedList<T> LinkedList<T>::merge(const LinkedList<T>& other) const {
   // the final result we want. This is what we will return at the end of
   // the function.
   LinkedList<T> merged;
+  Node* thruLeft=head_;
+  Node* thruRight=right.head_;
 
+  std::cout<<"left "<<thruLeft->data<<std::endl;
+  std::cout<<"right "<<thruRight->data<<std::endl;
+  if(left.empty()){
+    return right;
+  }else if(right.empty()){
+    return left;
+  }else{
+    // while(thruLeft->next!=nullptr){
+    //   thruLeft=thruLeft->next;
+    // }
+    while(left.head_!=nullptr){
+      std::cout<<left.front()<<std::endl;
+      left.popFront();
+    }
+  }
   // -----------------------------------------------------------
   // TODO: Your code here!
   // -----------------------------------------------------------
