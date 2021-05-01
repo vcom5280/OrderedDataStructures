@@ -132,10 +132,16 @@ void LinkedList<T>::insertOrdered(const T& newData) {
   Node* newNode=new Node(newData);
   if(head_==nullptr) {
     head_=newNode;
+    tail_=newNode;
   }else if(newNode->data<=head_->data){
     newNode->next=head_;
     newNode->next->prev=newNode;
     head_=newNode;
+  }else if(newNode->data>=tail_->data){
+    Node* oldTail = tail_;
+    oldTail->next = newNode;
+    newNode->prev = oldTail;
+    tail_ = newNode;
   }else{
     Node* thru = head_;
     while(thru->next != nullptr && thru->next->data<newNode->data) {
